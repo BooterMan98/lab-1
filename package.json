@@ -2,7 +2,7 @@
   "name": "lab1-201773088-9",
   "version": "1.0.0",
   "description": "Laboratorio 1",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
