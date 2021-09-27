@@ -1,0 +1,28 @@
+{
+  "name": "lab1-201773088-9",
+  "version": "1.0.0",
+  "description": "Laboratorio 1",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/booterman98/lab-1.git"
+  },
+  "keywords": [
+    "www",
+    "lab-1"
+  ],
+  "author": "César Paulangelo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/booterman98/lab-1/issues"
+  },
+  "homepage": "https://github.com/booterman98/lab-1#readme",
+  "dependencies": {
+    "apollo-server": "^3.3.0",
+    "graphql": "^15.6.0",
+    "graphql-tools": "^8.2.0"
+  }
+}
