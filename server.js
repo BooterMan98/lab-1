@@ -1,6 +1,7 @@
 const { ApolloServer } = require('apollo-server');
 const { makeExecutableSchema } = require('graphql-tools');
-
+require('dotenv').config()
+const connect = process.env.MONGO_DB_CONN
 
 const typeDefs = `
 type Producto {
@@ -67,5 +68,5 @@ const server = new ApolloServer({
 });
 
 server.listen().then(({url})=> {
-    console.log(`Servidor Iniciado en ${url}`)
+    console.log(`Servidor Iniciado en ${url}, ${connect}`)
 });
