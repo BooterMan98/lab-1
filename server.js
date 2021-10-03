@@ -1,7 +1,14 @@
 const { ApolloServer } = require('apollo-server');
 const { makeExecutableSchema } = require('graphql-tools');
+
+const mongoose = require('mongoose');
+
 require('dotenv').config()
 const connect = process.env.MONGO_DB_CONN
+
+mongoose.connect(connect)
+
+const {merge} = require('lodash')
 
 const typeDefs = `
 type Producto {
@@ -43,24 +50,22 @@ input VentaInput {
     detalleVenta: [ID!]
 }
 
+type Alert {
+    message: String
+}
 type Query {
-    getProd(id: ID!): Producto
+    _ : Boolean
 }
 type Mutation {
-    addProd(input: ProductoInput): Producto
-    delProd(id: ID!): Producto
-    updProd(id: ID!, input: ProductoInput): Producto
+    _ : Boolean
 }
 `;
 
-
+const resolver = {}
 
 const schema = new makeExecutableSchema({
-    typeDefs: typeDefs,
-    resolvers: {
-        Query: {},
-        Mutation: {}
-    }
+    typeDefs: [typeDefs],
+    resolvers: merge(resolver)
 })
 
 const server = new ApolloServer({
@@ -69,4 +74,5 @@ const server = new ApolloServer({
 
 server.listen().then(({url})=> {
     console.log(`Servidor Iniciado en ${url}, ${connect}`)
+    console.log(mongoose.version)
 });
