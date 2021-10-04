@@ -10,13 +10,9 @@ mongoose.connect(connect)
 
 const {merge} = require('lodash')
 
+// typeDefs
+const productoTypeDefs = require('./types/producto.types');
 const typeDefs = `
-type Producto {
-    idProducto: ID!
-    descripcion: String!
-    valor: Int
-    stock: Int
-}
 
 type DetalleVenta {
     idVenta: ID!
@@ -32,11 +28,6 @@ type Venta {
     detalleVenta: [DetalleVenta]
 }
 
-input ProductoInput {
-    descripcion: String!
-    valor: Int
-    stock: Int
-}
 
 input DetalleVentaInput {
     cantidad: Int
@@ -64,7 +55,7 @@ type Mutation {
 const resolver = {}
 
 const schema = new makeExecutableSchema({
-    typeDefs: [typeDefs],
+    typeDefs: [typeDefs, productoTypeDefs],
     resolvers: merge(resolver)
 })
 
