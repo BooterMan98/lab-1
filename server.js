@@ -10,19 +10,15 @@ mongoose.connect(connect)
 
 const {merge} = require('lodash')
 
+const cursoTypeDefs = require('./types/detalleVenta.types');
+const cursoResolvers = require('./resolvers/curso.resolvers');
+
 const typeDefs = `
 type Producto {
     idProducto: ID!
     descripcion: String!
     valor: Int
     stock: Int
-}
-
-type DetalleVenta {
-    idVenta: ID!
-    cantidad: Int
-    idProducto: Int
-    idDetalle: String!
 }
 
 type Venta {
@@ -38,12 +34,6 @@ input ProductoInput {
     stock: Int
 }
 
-input DetalleVentaInput {
-    cantidad: Int
-    idProducto: Int
-    idDetalle: String!
-}
-
 input VentaInput {
     fechaVenta: String!
     total: Int
@@ -53,9 +43,11 @@ input VentaInput {
 type Alert {
     message: String
 }
+
 type Query {
     _ : Boolean
 }
+
 type Mutation {
     _ : Boolean
 }
