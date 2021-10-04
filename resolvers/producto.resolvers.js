@@ -3,8 +3,8 @@ const Producto = require('../models/producto');
 
 module.exports = {
     Query: {
-        async getProd(obj, {idProducto}) {
-            const producto = await Producto.findById(idProducto);
+        async getProd(obj, {id}) {
+            const producto = await Producto.findById(id);
             return producto;
         }
     },
@@ -14,14 +14,14 @@ module.exports = {
             await producto.save();
             return producto;
         },
-        async updProd(obj, {idProducto, input }) {
-            const producto = await Producto.findByIdAndUpdate(idProducto, input);
+        async updProd(obj, {id, input }) {
+            const producto = await Producto.findByIdAndUpdate(id, input);
             return producto;
         },
-        async delProd(obj, {idProducto}) {
-            await Producto.findOneAndRemove( idProducto);
+        async delProd(obj, {id}) {
+            await Producto.findOneAndRemove( id);
             return {
-                message: `El producto ${idProducto} ha sido eliminado. :3`
+                message: `El producto ${id} ha sido eliminado. :3`
             }
         } 
 
