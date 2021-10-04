@@ -52,11 +52,13 @@ type Mutation {
 }
 `;
 
+// resolvers
 const resolver = {}
+const productoResolvers = require('./resolvers/producto.resolvers');
 
 const schema = new makeExecutableSchema({
     typeDefs: [typeDefs, productoTypeDefs],
-    resolvers: merge(resolver)
+    resolvers: merge(resolver, productoResolvers)
 })
 
 const server = new ApolloServer({
