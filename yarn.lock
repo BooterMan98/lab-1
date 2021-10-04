@@ -380,7 +380,7 @@ apollo-server-types@^3.2.0:
 
 apollo-server@^3.3.0:
   version "3.3.0"
-  resolved "https://registry.npmjs.org/apollo-server/-/apollo-server-3.3.0.tgz"
+  resolved "https://registry.yarnpkg.com/apollo-server/-/apollo-server-3.3.0.tgz#4c0c9d20185d89cbe83aec2c797564b5b5968ecb"
   integrity sha512-vJE+lIOQMgno3IaJvwo66S53m0CU4fq7qAgnOCubitIGNKEHiUL6yXKL0rMGfOPZqeed2S2QWQrOsCGQDIudMw==
   dependencies:
     apollo-server-core "^3.3.0"
@@ -612,7 +612,7 @@ graphql-tag@^2.11.0, graphql-tag@^2.12.3:
 
 graphql-tools@^8.2.0:
   version "8.2.0"
-  resolved "https://registry.npmjs.org/graphql-tools/-/graphql-tools-8.2.0.tgz"
+  resolved "https://registry.yarnpkg.com/graphql-tools/-/graphql-tools-8.2.0.tgz#493edc2760469f39d8334c6f20aa75ae91a7ab86"
   integrity sha512-9axT/0exEzVCk+vMPykOPannlrA4VQNo6nuWgh25IJ5arPf92OKxvjSHAbm7dQIFmcWxE0hVvyD2rWHjDqZCgQ==
   dependencies:
     "@graphql-tools/schema" "^8.2.0"
@@ -622,7 +622,7 @@ graphql-tools@^8.2.0:
 
 graphql@^15.6.0:
   version "15.6.0"
-  resolved "https://registry.npmjs.org/graphql/-/graphql-15.6.0.tgz"
+  resolved "https://registry.yarnpkg.com/graphql/-/graphql-15.6.0.tgz#e69323c6a9780a1a4b9ddf7e35ca8904bb04df02"
   integrity sha512-WJR872Zlc9hckiEPhXgyUftXH48jp2EjO5tgBBOyNMRJZ9fviL2mJBD6CAysk6N5S0r9BTs09Qk39nnJBkvOXQ==
 
 hoist-non-react-statics@^3.3.2:

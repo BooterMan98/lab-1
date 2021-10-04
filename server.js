@@ -1,5 +1,5 @@
 const { ApolloServer } = require('apollo-server');
-const { makeExecutableSchema } = require('graphql-tools');
+const { makeExecutableSchema } = require('@graphql-tools/schema');
 
 const mongoose = require('mongoose');
 
