@@ -1,6 +1,6 @@
 module.exports = `
     type DetalleVenta {
-        idDetalle: ID!
+        id: ID!
         cantidad: Int
         idVenta: Venta
         idProducto: Producto
