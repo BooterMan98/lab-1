@@ -1,14 +1,15 @@
 const mongoose = require('mongoose');
+const ObjectId = mongoose.Schema.Types.ObjectId;
 
 //Declaracion modelo detalleVenta
 const detalleVentaSchema = new mongoose.Schema({
-    cantidad: Int,
+    cantidad: Number,
     idVenta: {
-        type: Schema.Types.ObjectId,
+        type: ObjectId,
         ref: 'Venta'
     },
     idProducto: {
-        type: Schema.Types.ObjectId,
+        type: ObjectId,
         ref: 'Producto'
     }
 });
