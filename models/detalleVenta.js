@@ -5,11 +5,11 @@ const ObjectId = mongoose.Schema.Types.ObjectId;
 const detalleVentaSchema = new mongoose.Schema({
     cantidad: Number,
     idVenta: {
-        type: ObjectId,
+        type: String,
         ref: 'Venta'
     },
     idProducto: {
-        type: ObjectId,
+        type: String,
         ref: 'Producto'
     }
 });

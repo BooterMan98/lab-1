@@ -4,7 +4,7 @@ const DetalleVenta = require('../models/detalleVenta');
 module.exports = {
     Query: {
         async buscarProducto(obj, { idProducto }){
-            const producto = await Curso.findById(idProducto);
+            const producto = await DetalleVenta.findById(idProducto);
             return producto;
         }
     },

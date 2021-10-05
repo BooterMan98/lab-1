@@ -1,3 +1,6 @@
+const Venta = require('../types/venta.types');
+const Producto = require('../types/producto.types');
+
 module.exports = `
     type DetalleVenta {
         id: ID!
@@ -17,12 +20,12 @@ module.exports = `
     }
 
     extend type Query {
-        buscarProducto(idProducto): Producto
+        buscarProducto(idProducto: String): Producto
     }
 
     extend type Mutation {
         addDetalleVenta(input: DetalleVentaInput): DetalleVenta
-        updateDetalleVenta(id: idDetalle!, input: DetalleVentaInput): DetalleVenta
-        deleteDetalleVenta(id: idDetalle!): Alert
+        updateDetalleVenta(id: ID!, input: DetalleVentaInput): DetalleVenta
+        deleteDetalleVenta(id: ID!): Alert
     }
 `

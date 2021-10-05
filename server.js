@@ -10,10 +10,12 @@ mongoose.connect(connect)
 
 const {merge} = require('lodash')
 
-const detalleVentaTypeDefs = require('./types/detalleVenta.types');
-const detalleVentaResolvers = require('./resolvers/detalleVenta.resolvers');
 const productoTypeDefs = require('./types/producto.types');
 const productoResolvers = require('./resolvers/producto.resolvers');
+const detalleVentaTypeDefs = require('./types/detalleVenta.types');
+const detalleVentaResolvers = require('./resolvers/detalleVenta.resolvers');
+const ventaTypeDefs = require('./types/venta.types');
+const ventaResolvers = require('./resolvers/venta.resolvers');
 
 const typeDefs = `
     type Alert {
@@ -33,8 +35,8 @@ const typeDefs = `
 const resolver = {}
 
 const schema = new makeExecutableSchema({
-    typeDefs: [typeDefs, productoTypeDefs, detalleVentaTypeDefs],
-    resolvers: merge(resolver, productoResolvers, detalleVentaResolvers)
+    typeDefs: [typeDefs, ventaTypeDefs, productoTypeDefs, detalleVentaTypeDefs],
+    resolvers: merge(resolver, ventaResolvers, productoResolvers, detalleVentaResolvers)
 });
 
 const server = new ApolloServer({

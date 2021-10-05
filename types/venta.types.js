@@ -1,3 +1,5 @@
+const DetalleVenta = require('../types/venta.types');
+
 module.exports = `
     type Venta {
         id: ID!
@@ -9,7 +11,7 @@ module.exports = `
     input VentaInput {
         fechaVenta: String
         total: Int
-        detalleVenta: [DetalleVentaInput]
+        detalleVenta: [String]
     }
 
     type Alert {
