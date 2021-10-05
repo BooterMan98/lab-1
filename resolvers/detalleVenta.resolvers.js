@@ -1,5 +1,5 @@
 const { update } = require('lodash');
-const DetalleVenta = require('../models/DetalleVenta');
+const DetalleVenta = require('../models/detalleVenta');
 
 module.exports = {
     Query: {

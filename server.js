@@ -33,9 +33,9 @@ const typeDefs = `
 const resolver = {}
 
 const schema = new makeExecutableSchema({
-    typeDefs: [typeDefs, productoTypeDefs],
-    resolvers: merge(resolver, productoResolvers)
-})
+    typeDefs: [typeDefs, productoTypeDefs, detalleVentaTypeDefs],
+    resolvers: merge(resolver, productoResolvers, detalleVentaResolvers)
+});
 
 const server = new ApolloServer({
     schema: schema
