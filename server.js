@@ -10,54 +10,31 @@ mongoose.connect(connect)
 
 const {merge} = require('lodash')
 
-const cursoTypeDefs = require('./types/detalleVenta.types');
-const cursoResolvers = require('./resolvers/curso.resolvers');
+const detalleVentaTypeDefs = require('./types/detalleVenta.types');
+const detalleVentaResolvers = require('./resolvers/detalleVenta.resolvers');
+const productoTypeDefs = require('./types/producto.types');
+const productoResolvers = require('./resolvers/producto.resolvers');
 
 const typeDefs = `
-type Producto {
-    idProducto: ID!
-    descripcion: String!
-    valor: Int
-    stock: Int
-}
+    type Alert {
+        message: String
+    }
 
-type Venta {
-    idVenta: ID!
-    fechaVenta: String!
-    total: Int
-    detalleVenta: [DetalleVenta]
-}
+    type Query {
+        _ : Boolean
+    }
 
-input ProductoInput {
-    descripcion: String!
-    valor: Int
-    stock: Int
-}
-
-input VentaInput {
-    fechaVenta: String!
-    total: Int
-    detalleVenta: [ID!]
-}
-
-type Alert {
-    message: String
-}
-
-type Query {
-    _ : Boolean
-}
-
-type Mutation {
-    _ : Boolean
-}
+    type Mutation {
+        _ : Boolean
+    }
 `;
 
+// resolvers
 const resolver = {}
 
 const schema = new makeExecutableSchema({
-    typeDefs: [typeDefs],
-    resolvers: merge(resolver)
+    typeDefs: [typeDefs, productoTypeDefs],
+    resolvers: merge(resolver, productoResolvers)
 })
 
 const server = new ApolloServer({
