@@ -4,11 +4,12 @@ module.exports = {
     Query: {
         async buscarVenta(obj, {idVenta}){
             const venta = await Venta.findById(idVenta)
-            return venta
+            return venta.populate("detalleVenta")
         },
         async buscarDetalle(obj, {idVenta}){
             const venta = await Venta.findById(idVenta)
-            return venta.detalleVenta
+            const dv = await venta.populate("detalleVenta")
+            return dv['detalleVenta']
         },
         async calculoTotal(obj){
             const ventas = await Venta.find()
@@ -21,7 +22,6 @@ module.exports = {
         async addVenta(obj, {input}){
             const venta = new Venta(input)
             await venta.save()
-            console.log(venta)
             return venta
         },
         async updVenta(obj, {id, input}){

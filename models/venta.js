@@ -1,11 +1,10 @@
 const mongoose = require('mongoose');
-const ObjectId = mongoose.Schema.Types.ObjectId;
 
 const VentaSchema = new mongoose.Schema({
     fechaVenta: String,
     total: Number,
     detalleVenta: [{
-        type: String,
+        type: mongoose.Schema.Types.ObjectId,
         ref: 'DetalleVenta'
     }]
 });
