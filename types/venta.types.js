@@ -1,5 +1,3 @@
-const DetalleVenta = require('../types/venta.types');
-
 module.exports = `
     type Venta {
         id: ID!
@@ -11,21 +9,17 @@ module.exports = `
     input VentaInput {
         fechaVenta: String
         total: Int
-        detalleVenta: [String]
+        detalleVenta: [DetalleVentaInput]
     }
 
     type Alert {
         message: String
     }
 
-    type Total {
-        total: Int
-    }
-
     extend type Query {
         buscarVenta(idVenta: ID!): Venta
         buscarDetalle(idVenta: ID!): [DetalleVenta]
-        calculoTotal: Total
+        calculoTotal: Int
     }
 
     extend type Mutation {
