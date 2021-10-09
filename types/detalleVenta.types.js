@@ -11,8 +11,8 @@ module.exports = `
 
     input DetalleVentaInput {
         cantidad: Int
-        idVenta: String
         idProducto: String
+        idVenta: String
     }
 
     type Alert {

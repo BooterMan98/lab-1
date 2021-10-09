@@ -1,29 +1,38 @@
 const { update } = require('lodash');
-const DetalleVenta = require('../models/detalleVenta');
+let DetalleVenta = require('../data/detalleventa');
+let productos = require('../data/productos');
+let venta = require('../data/venta');
 
 module.exports = {
     Query: {
         async buscarProducto(obj, { idProducto }){
-            const producto = await DetalleVenta.findById(idProducto);
+            const producto = productos.find( producto => idProducto == producto.id);
             return producto;
         }
     },
     Mutation: {
         async addDetalleVenta(obj, { input }){
-            // Crea un objeto de tipo mongoSchema
-            const detalleVenta = new DetalleVenta(input);
-            //Metodo de guardado de mongodb
-            await detalleVenta.save(); //objeto flush (id se va a llenar con id de mongodb)
-            return detalleVenta;
+            const id = String(DetalleVenta.length + 1);
+            const dv = {id, ...input};
+            DetalleVenta.push(dv)
+            dv.idProducto = productos.find(producto => input.idProducto == producto.id);
+            dv.idVenta = venta.find(venta => input.idVenta == venta.id);
+            return dv;
         },
         async updateDetalleVenta(obj, { id, input }){
-            const detalleVenta = await DetalleVenta.findByIdAndUpdate(id, input);
-            return detalleVenta;
+            const {cantidad, idProducto} = input
+            const detalleVentaIndex = DetalleVenta.findIndex((detalleVenta) => id == detalleVenta.id);
+            const dv = DetalleVenta[detalleVentaIndex];
+            const new_dv = Object.assign(dv,{cantidad, idProducto});
+            DetalleVenta[detalleVentaIndex] = new_dv;
+            new_dv.idProducto = productos.find(producto => input.idProducto == producto.id);
+            new_dv.idVenta = venta.find(venta => input.idVenta == venta.id);
+            return new_dv;
         },
         async deleteDetalleVenta(obj, { id }){
-            await DetalleVenta.deleteOne({ _id: id });
+            DetalleVenta = DetalleVenta.filter( (dv) => dv.id != id);
             return {
-                message: `El curso con id ${id} fue eliminado`
+                message: `El detalle venta con id ${id} fue eliminado`
             }
         }
 
