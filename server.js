@@ -4,9 +4,6 @@ const { makeExecutableSchema } = require('@graphql-tools/schema');
 const mongoose = require('mongoose');
 
 require('dotenv').config()
-const connect = process.env.MONGO_DB_CONN
-
-mongoose.connect(connect)
 
 const {merge} = require('lodash')
 
@@ -44,6 +41,5 @@ const server = new ApolloServer({
 });
 
 server.listen().then(({url})=> {
-    console.log(`Servidor Iniciado en ${url}, ${connect}`)
-    console.log(mongoose.version)
+    console.log(`Servidor Iniciado en ${url}`)
 });
