@@ -1,5 +1,6 @@
 let ventas = require('../data/venta')
 let detalleventas = require('../data/detalleventa')
+let productos = require('../data/productos')
 
 module.exports = {
     Query: {
@@ -23,14 +24,17 @@ module.exports = {
             const idVenta = String(ventas.length + 1)
             const today = new Date();
             const fechaVenta = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
-
-            const venta = { id: idVenta, fechaVenta, ...input}
+            let total = 0
             input.detalleVenta.forEach(element => {
                 const id = String(detalleventas.length +1 )
                 const dv = {id, idVenta,  cantidad: element.cantidad, idProducto: element.idProducto}
+                const producto = productos.find((producto) => producto.id == element.idProducto)
+                total += ( element.cantidad * producto.valor )
                 detalleventas.push(dv)
             });
+            const venta = { id: idVenta, total, fechaVenta, ...input}
             ventas.push(venta)
+            venta.detalleVenta = detalleventas.filter((dv) => dv.idVenta === idVenta)
             return venta
         },
         async updVenta(obj, { id, input }) {
